@@ -1,23 +1,32 @@
-version: 2.1
-# aws-s3 orb
-commands:
-  sync:
-    description: "A simple encapsulation of doing an s3 sync"
-    parameters:
-      from:
-        type: string
-      to:
-        type: string
-      overwrite:
-        default: false
-        type: boolean
-    steps:
-      - run:
-          name: Deploy to S3
-          command: aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>
-workflows:
-    version: 2
-    workflow:
-      jobs:
-        - commands
+#version: 2.1
+## aws-s3 orb
+#commands:
+  #sync:
+    #description: "A simple encapsulation of doing an s3 sync"
+    #parameters:
+      #from:
+        #type: string
+      #to:
+        #type: string
+      #overwrite:
+        #default: false
+        #type: boolean
+    #steps:
+      #- run:
+          #name: Deploy to S3
+          #command: aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>
+#workflows:
+    #version: 2
+    #workflow:
+      #jobs:
+        #- commands
         #- sync
+version: 2.1
+
+jobs:
+  myjob:
+    docker:
+      - image: "circleci/node:9.6.1"
+    steps:
+      - sayhello:
+          to: "Lev"
