@@ -1,36 +1,27 @@
-#version: 2.1
-## aws-s3 orb
-#commands:
-  #sync:
-    #description: "A simple encapsulation of doing an s3 sync"
-    #parameters:
-      #from:
-        #type: string
-      #to:
-        #type: string
-      #overwrite:
-        #default: false
-        #type: boolean
-    #steps:
-      #- run:
-          #name: Deploy to S3
-          #command: aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>
-#workflows:
-    #version: 2
-    #workflow:
-      #jobs:
-        #- commands
-        #- sync
-
 version: 2.1
+description: # The purpose of this orb
+
 orbs:
-  aws-s3: circleci/aws-s3@1.0.0 #imports the s3 orb in the circleci namespace
-workflows:
-  build-test-deploy:
-    jobs:
-      - deploy2s3:
+  my-orb:
+    orbs:
+      codecov: circleci/codecov-clojure@0.0.4
+    executors:
+      specialthingsexecutor:
+        docker:
+          - image: circleci/ruby:1.4.2
+    commands:
+      dospecialthings:
         steps:
-          - aws-s3/sync: #invokes the sync command declared in the s3 orb
-              from: 
-             to: "s3://mybucket_uri"
-              overwrite: true
+          - run: echo "We will now do special things"
+    jobs:
+      myjob:
+        executor: specialthingsexecutor
+        steps:
+          - dospecialthings
+          - codecov/upload:
+              path: ~/tmp/results.xml
+
+workflows:
+  main:
+    jobs:
+      - my-orb/myjob
