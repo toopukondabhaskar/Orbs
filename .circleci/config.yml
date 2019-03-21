@@ -1,6 +1,6 @@
 version: 2.1
 # aws-s3 orb
-
+jobs:
 commands:
   sync:
     description: "A simple encapsulation of doing an s3 sync"
@@ -15,4 +15,9 @@ commands:
     steps:
       - run:
           name: Deploy to S3
-          command: aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>"
+          command: aws s3 sync << parameters.from >> << parameters.to >><<# parameters.overwrite >> --delete<</ parameters.overwrite >>
+workflows:
+    version: 2
+    workflow:
+      jobs:
+        - commands`
