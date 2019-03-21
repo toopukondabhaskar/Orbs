@@ -30,3 +30,8 @@ jobs:
     steps:
       - sayhello:
           to: "Lev"
+workflows:
+   version: 2
+   workflow:
+      jobs:
+        - myjob
