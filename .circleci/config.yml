@@ -1,6 +1,5 @@
 version: 2.1
 # aws-s3 orb
-jobs:
 commands:
   sync:
     description: "A simple encapsulation of doing an s3 sync"
@@ -19,5 +18,6 @@ commands:
 workflows:
     version: 2
     workflow:
-      jobs:
-        - commands`
+      #jobs:
+      commands:
+        - sync
