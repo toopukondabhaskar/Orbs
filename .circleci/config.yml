@@ -1,9 +1,14 @@
 version: 2.1
 
-orbs:
-  hello: namespace/orb@dev:0.0.1
-
+jobs:
+  hello/hello-build:
+    docker:
+      - image: circleci/buildpack-deps:curl-browsers
+    steps:
+      - run:
+          command: echo "Hello, build!"
 workflows:
   hello-workflow:
     jobs:
       - hello/hello-build
+  version: 2
