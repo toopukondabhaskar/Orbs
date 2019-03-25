@@ -6,7 +6,7 @@ jobs:
       - image: circleci/buildpack-deps:curl-browsers
     steps:
       - run:
-          command: echo "Hello, build!"
+          command: echo "Hello, build!" && echo "welcome to Circleci demo"
 workflows:
   hello-workflow:
     jobs:
