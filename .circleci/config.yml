@@ -1,16 +1,26 @@
+#version: 2.1
+
+#jobs:
+  #hello-build:
+    #docker:
+      #- image: circleci/buildpack-deps:curl-browsers
+    #steps:
+      #- run:
+          #command: echo "Hello, build!" && echo "welcome to Circleci demo"
+#workflows:
+  #hello-workflow:
+    #jobs:
+      #- hello-build
+      #- hello/hello-build
+  #version: 2
+
 version: 2.1
 
-jobs:
-  hello-build:
-    docker:
-      - image: circleci/buildpack-deps:curl-browsers
-    steps:
-      - run:
-          command: echo "Hello, build!" && echo "welcome to Circleci demo"
+orbs:
+  hello: namespace/orb@dev:0.0.1
+
 workflows:
   hello-workflow:
     jobs:
-      - hello-build
-      #- hello/hello-build
-  #version: 2
-  
+      - hello/hello-build
+      
