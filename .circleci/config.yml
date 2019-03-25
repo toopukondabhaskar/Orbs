@@ -8,7 +8,7 @@ jobs:
       - run:
           command: echo "Hello, build!"
 workflows:
-  hello-workflow:
+  #hello-workflow:
     jobs:
       - hello/hello-build
   version: 2
