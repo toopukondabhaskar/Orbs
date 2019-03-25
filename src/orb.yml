@@ -13,4 +13,4 @@ jobs:
   hello-build:
     executor: default
     steps:
-      - run: echo "Hello, build!"
+      - run: echo "Hello, build!" && echo "welcome to Circleci demo"
