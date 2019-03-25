@@ -7,9 +7,9 @@ jobs:
     steps:
       - run:
           command: echo "Hello, build!"
-workflows:
-  hello-workflow:
-    jobs:
-      - hello-build
+#workflows:
+  #hello-workflow:
+    #jobs:
+      #- hello/hello-build
   #version: 2
   
