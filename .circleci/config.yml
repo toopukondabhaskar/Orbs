@@ -17,7 +17,7 @@
 version: 2.1
 
 orbs:
-  hello: namespace/orb@dev:0.0.1
+  mynamespace-aws: mynamespace/mynamespace-aws:0.0.1
 
 workflows:
   hello-workflow:
