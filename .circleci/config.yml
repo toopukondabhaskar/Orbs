@@ -22,5 +22,5 @@ orbs:
 workflows:
   hello-workflow:
     jobs:
-      - hello/hello-build
+      - hello-build
       
