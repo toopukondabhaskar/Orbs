@@ -7,7 +7,7 @@ executors:
         type: string
         default: "curl-browsers"
       docker:
-        - image:  circleci/buildpack-deps:parameters.tag
+        - image:  mynamespace/buildpack-deps:parameters.tag
 
 jobs:
   hello-build:
